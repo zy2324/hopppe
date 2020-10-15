@@ -1,8 +1,21 @@
 package main
 
-import "github.com/tidwall/gjson"
+import (
+	"fmt"
+	"github.com/tidwall/gjson"
+)
 
-const json = `{"name":{"first":"Janet","last":"Prichard"},"age":47}`
+const area = `{
+		"武清staging->IDC": ["staging", "ksywq"],
+			"IDC->C3金服专用-捷付区":["金服专用-捷付区", "c3"],
+				"IDC->C3金服专用-NFC区":["金服专用-NFC区", "c3"],
+					"IDC->C3金服专用-金融区":["金服专用-金融区", "c3"],
+						"IDC->C4金服专用-捷付区":["金服专用-捷付区", "c4"],
+							"IDC->C4金服专用-NFC区":["金服专用-NFC区", "c4"],
+								"IDC->C4金服专用-金融区":["金服专用-金融区", "c4"]
+									}`
+
+const json = `{"name":["Janet","Prichard"],"age":47}`
 const json1 = `{
 	  "programmers": [
 	      {
@@ -19,11 +32,7 @@ const json1 = `{
 										}`
 
 func main() {
-	value := gjson.Get(json, "name.last")
-	println(value.String())
+	value := gjson.Get(area, "IDC->C3金服专用-NFC区")
+	fmt.Println("site:" + value.Array()[1].String())
 
-	result := gjson.Get(json1, "programmers.#.lastName")
-	for _, name := range result.Array() {
-		println(name.String())
-	}
 }
