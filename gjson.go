@@ -1,5 +1,7 @@
 package main
 
+// 不错的文章：http://www.360doc.com/content/20/0325/08/33093582_901513606.shtml
+
 import (
 	"fmt"
 	"github.com/tidwall/gjson"
@@ -34,5 +36,8 @@ const json1 = `{
 func main() {
 	value := gjson.Get(area, "IDC->C3金服专用-NFC区")
 	fmt.Println("site:" + value.Array()[1].String())
+
+	valuses := gjson.Get(json1, "programmers.0.lastName")
+	fmt.Println(valuses)
 
 }
