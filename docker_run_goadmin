@@ -1,0 +1,5 @@
+1.找到go-admin项目，已在本地安装golang,nginx,mysql运行go-admin成功
+	搜索go学习项目，找到go-admin，下载git项目，查看readme，测试运行
+
+2.安装docker,随后安装nginx mysql golang (doing)
+	菜鸟教程安装一系列工具
