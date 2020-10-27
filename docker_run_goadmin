@@ -1,5 +1,26 @@
 1.找到go-admin项目，已在本地安装golang,nginx,mysql运行go-admin成功
 	搜索go学习项目，找到go-admin，下载git项目，查看readme，测试运行
 
-2.安装docker,随后安装nginx mysql golang (doing)
+2.安装docker,随后安装nginx mysql golang
 	菜鸟教程安装一系列工具
+
+2020.10.27更新
+3.docker mysql导入本地数据库表
+        参考文章：https://www.cnblogs.com/gyadmin/p/7814737.html
+        本地项目原来使用的是本地数据库，现docker已启动mysql，修改本地项目中mysql配置Host: "0.0.0.0",端口、密码、用户也均为docker数据库中配置。运行成功	
+
+4.本地项目构建镜像，dockerfile
+         刚才有创建镜像，启动失败，排查发现就是数据库链接127.0.0.1失败，现已启动docker的mysql，且配置文件链接为0.0.0.0
+	 因此先删除之前启动失败的镜像：1.首先看container有保持使用记录没，有的话docker rm id 2.进一步docker rmi imageId
+	 
+	 touch Dockerfile 创建镜像
+	 项目目录下：docker build -t go-admin-docker .
+	 docker logs -t pensive_swanson(ps -a最后的NAME)
+	 结果启动还是报数据库链接拒绝的错
+	 anic: dial tcp 0.0.0.0:6006: connect: connection refused
+	 所以现在问题
+	 镜像应用如何使用mysql镜像
+	 解决中
+	 
+	 
+  
